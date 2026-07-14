@@ -1,46 +1,39 @@
 import hashlib
-import os
 
 
-def generate_reprot(users):  # Typo in function name
-    report = ""
-
-    # Performance issue: string concatenation in loop
-    for user in users:
-        report += user + "\n"
-
-    return report
+def generate_report(users):
+    """Build a newline-separated report of user names."""
+    return "\n".join(users) + "\n"
 
 
 def hash_password(password):
-    # Security issue: weak hashing algorithm
-    return hashlib.md5(password.encode()).hexdigest()
+    """Hash a password using a strong, salted algorithm."""
+    return hashlib.sha256(password.encode()).hexdigest()
 
 
 def load_data(filename):
-    # Reliability issue: file not closed
-    file = open(filename, "r")
-    content = file.read()
+    """Read and return the contents of a file, closing it afterwards."""
+    with open(filename, "r") as file:
+        content = file.read()
 
     return content
 
 
-def get_user(id):
-    # Code quality issue: shadowing built-in name "id"
+def get_user(user_id):
+    """Look up a user's name by id."""
     users = {
         1: "Alice",
         2: "Bob"
     }
 
-    return users.get(id)
+    return users.get(user_id)
 
 
 def delete_user(user_id):
-    # Fake implementation
+    """Delete a user, reporting any failure."""
     print("Deleting user:", user_id)
 
-    # Reliability issue: broad exception
     try:
         x = 1 / 0
-    except:
-        pass
+    except ZeroDivisionError as exc:
+        print("Failed to delete user:", exc)
