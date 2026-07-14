@@ -3,9 +3,9 @@
 This project previously contained the following issues, which have since been fixed:
 
 ## Security Issues
-- Hardcoded password → password is now hashed (SHA-256) and compared as a hash;
-  the default hash can be overridden via the `ADMIN_PASSWORD_HASH` env var, and
-  the password prompt no longer echoes input (`getpass`).
+- Hardcoded password → the default hash can be overridden via the
+  `ADMIN_PASSWORD_HASH` env var, and the password prompt no longer echoes
+  input (`getpass`).
 - Plaintext authentication → passwords are compared as hashes.
 - MD5 password hashing → replaced with SHA-256.
 
