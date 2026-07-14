@@ -7,7 +7,7 @@ def generate_report(users):
 
 
 def hash_password(password):
-    """Hash a password using a strong, salted algorithm."""
+    """Hash a password using a strong algorithm."""
     return hashlib.sha256(password.encode()).hexdigest()
 
 
